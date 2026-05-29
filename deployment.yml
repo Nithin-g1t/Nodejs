@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+    labels:
+        name: "NodeJS_app"
+    name: "NodeJS_app"
+spec:
+
+    replicas: 2
+    selector:
+        matchLabels:
+            name: "NodeJS_app"
+    template:
+        metadata:
+            labels:
+                name: "NodeJS_app"
+        spec:
+            imagePullSecrets:
+            -   name: "cred-secret"
+            containers:
+            -   name: " NodeJS" 
+                image: "c505304/learning:20"
+                imagePullPolicy: Always
+                ports: 
+                -   containerPort: 3000
+                
